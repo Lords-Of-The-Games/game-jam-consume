@@ -1,0 +1,22 @@
+name: Godot Build Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Download Godot Headless
+      run: |
+        wget https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux_headless.64.zip
+        unzip Godot_v4.2.1-stable_linux_headless.64.zip
+        chmod +x Godot_v4.2.1-stable_linux_headless.64
+
+    - name: Run Godot build (headless)
+      run: ./Godot_v4.2.1-stable_linux_headless.64 --headless --build-solutions
