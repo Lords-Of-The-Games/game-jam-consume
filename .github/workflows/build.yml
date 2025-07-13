@@ -25,8 +25,8 @@ jobs:
       - name: Parse project scenes and scripts
         run: godot --headless --version
 
-      - name: Parse project scenes and scripts v2
-        run: godot --headless -q --check-only
+      - name: Validate Godot project (GDScript)
+        run: ./godot --headless -q --check-only
 
       - name: Run headless build
         run: godot --headless -e -q
