@@ -24,9 +24,9 @@ jobs:
         run: |
           wget -O godot.zip https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_mono_linux_x86_64.zip
           unzip godot.zip -d godot
-          chmod +x godot/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64
+          chmod +x godot/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64
 
       - name: Run headless project load (smoke test)
         run: |
-          ./godot/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64 \
+          ./godot/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64/Godot_v4.2.2-stable_mono_linux_x86_64 \
             --headless --editor --quit --path .
