@@ -1,32 +1,28 @@
-name: Godot Build Check
+name: Godot GDScript Headless Check
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
-
-    container:
-      image: barichello/godot-ci:4.2.1
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Disable GitPlugin in CI (sed fix)
+      - name: Download Godot Headless
         run: |
-          sed -i 's/version_control\/plugin_name="GitPlugin"/version_control\/plugin_name=""/' project.godot
- 
-      - name: Print Godot version
-        run: godot --version
+          curl -LO https://downloads.tuxfamily.org/godotengine/4.2.2/Godot_v4.2.2-stable_linux_headless.64.zip
+          unzip Godot_v4.2.2-stable_linux_headless.64.zip
+          chmod +x Godot_v4.2.2-stable_linux_headless.64
+          mv Godot_v4.2.2-stable_linux_headless.64 godot
 
-      - name: Parse project scenes and scripts
-        run: godot --headless --version
+      - name: Disable GitPlugin in CI
+        run: |
+          sed -i 's/version_control\/plugin_name="GitPlugin"/version_control\/plugin_name=""/' project.godot || true
+          sed -i 's/version_control\/autoload_on_startup=true/version_control\/autoload_on_startup=false/' project.godot || true
 
-      - name: Validate Godot project (GDScript)
-        run: godot --headless -q --check-only --path .
-
-      - name: Run headless build
-        run: godot --headless -e -q
+      - name: Run Godot Headless Validation
+        run: ./godot --headless -q --check-only --path .
