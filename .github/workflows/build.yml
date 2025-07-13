@@ -26,7 +26,7 @@ jobs:
         run: godot --headless --version
 
       - name: Validate Godot project (GDScript)
-        run: ./godot --headless -q --check-only --path .
+        run: godot --headless -q --check-only --path .
 
       - name: Run headless build
         run: godot --headless -e -q
