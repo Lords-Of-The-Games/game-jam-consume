@@ -18,7 +18,7 @@ jobs:
       - name: Disable GitPlugin in CI (sed fix)
         run: |
           sed -i 's/version_control\/plugin_name="GitPlugin"/version_control\/plugin_name=""/' project.godot
-
+ 
       - name: Print Godot version
         run: godot --version
 
