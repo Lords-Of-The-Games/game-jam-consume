@@ -8,15 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: barichello/godot-ci:4.2.1
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Download Godot Headless
-      run: |
-        curl -L -o godot.zip https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux_headless.64.zip
-        unzip godot.zip
-        chmod +x Godot_v4.2.1-stable_linux_headless.64
+      - name: Print Godot version
+        run: godot --version
 
-    - name: Run Godot build
-      run: ./Godot_v4.2.1-stable_linux_headless.64 --headless --build-solutions
+      - name: Run headless build
+        run: godot --headless --build-solutions
