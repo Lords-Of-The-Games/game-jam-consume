@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyfgaflg7oum2"]
+[gd_scene load_steps=9 format=3 uid="uid://cyfgaflg7oum2"]
 
 [ext_resource type="Script" uid="uid://crldsix7litq0" path="res://UI/ui_master.gd" id="1_xafi3"]
 [ext_resource type="Script" uid="uid://bdty52pb11ws5" path="res://UI/ability_container.gd" id="2_2geti"]
+[ext_resource type="Theme" uid="uid://cuoy1vod8snh2" path="res://UI/Menus/resources/themes/gravity.tres" id="3_8q3o6"]
+[ext_resource type="Script" uid="uid://cxflwlg6b2dje" path="res://addons/input_prompts/action_prompt/action_prompt.gd" id="3_qbdmn"]
 [ext_resource type="Script" uid="uid://diolph6tt2e1l" path="res://UI/ability_menu.gd" id="3_wdcx8"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8q3o6"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_qbdmn"]
+device = -1
+physical_keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_xt7v4"]
+device = -1
+physical_keycode = 4194328
 
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("ability1animator", "ability2animator", "ability3animator")]
 script = ExtResource("1_xafi3")
@@ -31,13 +46,18 @@ script = ExtResource("2_2geti")
 
 [node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10/10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability1"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_8q3o6")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
 [node name="Ability2" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
 position = Vector2(0, -50)
@@ -51,13 +71,18 @@ ability_number = 1
 
 [node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability2"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_qbdmn")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
 [node name="Ability3" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
 position = Vector2(80, 0)
@@ -71,13 +96,18 @@ ability_number = 2
 
 [node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability3"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_xt7v4")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
 [node name="AbilityMenu" type="VBoxContainer" parent="."]
 offset_right = 40.0
