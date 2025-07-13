@@ -14,9 +14,9 @@ jobs:
 
     - name: Download Godot Headless
       run: |
-        wget https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux_headless.64.zip
-        unzip Godot_v4.2.1-stable_linux_headless.64.zip
+        curl -L -o godot.zip https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux_headless.64.zip
+        unzip godot.zip
         chmod +x Godot_v4.2.1-stable_linux_headless.64
 
-    - name: Run Godot build (headless)
+    - name: Run Godot build
       run: ./Godot_v4.2.1-stable_linux_headless.64 --headless --build-solutions
