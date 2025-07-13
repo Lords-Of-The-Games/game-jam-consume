@@ -15,6 +15,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Disable GitPlugin in CI (temporary change)
+        run: |
+           sed -i 's/^vcs_name="GitPlugin"/vcs_name=""/' project.godot
+
       - name: Print Godot version
         run: godot --version
 
