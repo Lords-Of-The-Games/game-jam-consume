@@ -23,4 +23,4 @@ jobs:
         run: godot --version
 
       - name: Run headless build
-        run: godot --headless --build-solutions
+        run: godot --headless -e -q
