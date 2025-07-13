@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvwn2scbdei8m"]
+
+[ext_resource type="Script" uid="uid://dfuifx87gm3gt" path="res://UI/ability_button.gd" id="1_j8uyy"]
+
+[node name="AbilityButton" type="Button"]
+process_mode = 3
+offset_right = 32.0
+offset_bottom = 8.0
+script = ExtResource("1_j8uyy")
