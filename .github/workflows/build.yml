@@ -1,26 +1,32 @@
-name: Build and Smoke Test
+name: Godot Headless Build Check
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  build:
-    name: Build Godot Project
+  headless-check:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Cache Godot binary
+        id: godot-cache
+        uses: actions/cache@v3
         with:
-          submodules: recursive
+          path: godot
+          key: godot-4.2.2-mono
 
-      - name: Install Dependencies
+      - name: Download Godot if not cached
+        if: steps.godot-cache.outputs.cache-hit != 'true'
         run: |
-          sudo apt-get update
-          sudo apt-get install -y scons python3-pip
-          pip3 install pytest
+          wget -O godot.zip https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_mono_linux_x86_64.zip
+          unzip godot.zip -d godot
+          chmod +x godot/Godot_v4.2.2-stable_mono_linux_x86_64
 
-      - name: Build Godot (Headless)
+      - name: Run headless project load (smoke test)
         run: |
-          scons platform=linux arch=x86_64 target=release_debug
+          ./godot/Godot_v4.2.2-stable_mono_linux_x86_64 \
+            --headless --editor --quit --path .
