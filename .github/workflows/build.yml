@@ -22,5 +22,11 @@ jobs:
       - name: Print Godot version
         run: godot --version
 
+      - name: Parse project scenes and scripts
+        run: godot --headless --version
+
+      - name: Parse project scenes and scripts v2
+        run: godot --headless -q --check-only
+
       - name: Run headless build
         run: godot --headless -e -q
