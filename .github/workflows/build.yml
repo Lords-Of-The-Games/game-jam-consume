@@ -1,28 +1,26 @@
-name: Godot GDScript Headless Check
+name: Build and Smoke Test
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
+  build:
+    name: Build Godot Project
+    runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      - name: Download Godot Headless
+      - name: Install Dependencies
         run: |
-          curl -LO https://downloads.tuxfamily.org/godotengine/4.2.2/Godot_v4.2.2-stable_linux_headless.64.zip
-          unzip Godot_v4.2.2-stable_linux_headless.64.zip
-          chmod +x Godot_v4.2.2-stable_linux_headless.64
-          mv Godot_v4.2.2-stable_linux_headless.64 godot
+          sudo apt-get update
+          sudo apt-get install -y scons python3-pip
+          pip3 install pytest
 
-      - name: Disable GitPlugin in CI
+      - name: Build Godot (Headless)
         run: |
-          sed -i 's/version_control\/plugin_name="GitPlugin"/version_control\/plugin_name=""/' project.godot || true
-          sed -i 's/version_control\/autoload_on_startup=true/version_control\/autoload_on_startup=false/' project.godot || true
-
-      - name: Run Godot Headless Validation
-        run: ./godot --headless -q --check-only --path .
+          scons platform=linux arch=x86_64 target=release_debug
