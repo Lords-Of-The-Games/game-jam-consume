@@ -1,6 +1,8 @@
 name: Godot Headless Build Check
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
