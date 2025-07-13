@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyfgaflg7oum2"]
+
+[ext_resource type="Script" uid="uid://crldsix7litq0" path="res://UI/ui_master.gd" id="1_xafi3"]
+[ext_resource type="Script" uid="uid://bdty52pb11ws5" path="res://UI/ability_container.gd" id="2_2geti"]
+[ext_resource type="Script" uid="uid://diolph6tt2e1l" path="res://UI/ability_menu.gd" id="3_wdcx8"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("ability1animator", "ability2animator", "ability3animator")]
+script = ExtResource("1_xafi3")
+ability1animator = NodePath("PlayTime/AbilitiesParent/Ability1/Ability1")
+ability2animator = NodePath("PlayTime/AbilitiesParent/Ability2/Ability1")
+ability3animator = NodePath("PlayTime/AbilitiesParent/Ability3/Ability1")
+
+[node name="PlayTime" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AbilitiesParent" type="Sprite2D" parent="PlayTime"]
+position = Vector2(950, 560)
+
+[node name="Ability1" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
+position = Vector2(-100, 0)
+
+[node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability1"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_2geti")
+
+[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
+layout_mode = 2
+text = "Jump : 10/10"
+horizontal_alignment = 1
+
+[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
+layout_mode = 2
+text = "space"
+horizontal_alignment = 1
+
+[node name="Ability2" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
+position = Vector2(0, -50)
+
+[node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability2"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_2geti")
+current_ability = 1
+ability_number = 1
+
+[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
+layout_mode = 2
+text = "Jump : 10"
+horizontal_alignment = 1
+
+[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
+layout_mode = 2
+text = "space"
+horizontal_alignment = 1
+
+[node name="Ability3" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
+position = Vector2(80, 0)
+
+[node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability3"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_2geti")
+current_ability = 2
+ability_number = 2
+
+[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
+layout_mode = 2
+text = "Jump : 10"
+horizontal_alignment = 1
+
+[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
+layout_mode = 2
+text = "space"
+horizontal_alignment = 1
+
+[node name="AbilityMenu" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_wdcx8")
