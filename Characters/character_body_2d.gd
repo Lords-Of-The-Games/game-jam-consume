@@ -3,7 +3,7 @@ extends CharacterBody2D
 var current_ability1 : GlobalVariables.abilities
 var current_ability2 : GlobalVariables.abilities
 var current_ability3 : GlobalVariables.abilities
-
+asd
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ability1"):
 		jump()
