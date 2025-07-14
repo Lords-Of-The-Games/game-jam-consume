@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cuoy1vod8snh2"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cuoy1vod8snh2"]
+
+[ext_resource type="SystemFont" path="res://UI/Menus/assets/new_system_font.tres" id="1_vtimj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w50h3"]
 content_margin_left = 16.0
@@ -50,6 +52,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8hb5"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.117647)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sucf2"]
 bg_color = Color(0.0619267, 0.0619267, 0.0619266, 1)
@@ -105,6 +110,12 @@ Button/styles/focus = null
 Button/styles/hover = SubResource("StyleBoxFlat_w50h3")
 Button/styles/normal = SubResource("StyleBoxFlat_6tkof")
 Button/styles/pressed = SubResource("StyleBoxFlat_ftays")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.737255)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_outline_size = 3
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_vtimj")
+Label/styles/normal = SubResource("StyleBoxFlat_t8hb5")
 Panel/styles/panel = SubResource("StyleBoxFlat_sucf2")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_sucf2")
 TabContainer/colors/font_hovered_color = Color(0.945281, 0.945281, 0.945281, 1)

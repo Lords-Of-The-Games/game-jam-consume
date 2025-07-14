@@ -1,14 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyfgaflg7oum2"]
+[gd_scene load_steps=12 format=3 uid="uid://cyfgaflg7oum2"]
 
 [ext_resource type="Script" uid="uid://crldsix7litq0" path="res://UI/ui_master.gd" id="1_xafi3"]
 [ext_resource type="Script" uid="uid://bdty52pb11ws5" path="res://UI/ability_container.gd" id="2_2geti"]
-[ext_resource type="Script" uid="uid://diolph6tt2e1l" path="res://UI/ability_menu.gd" id="3_wdcx8"]
+[ext_resource type="Theme" uid="uid://cuoy1vod8snh2" path="res://UI/Menus/resources/themes/gravity.tres" id="3_8q3o6"]
+[ext_resource type="Script" uid="uid://cxflwlg6b2dje" path="res://addons/input_prompts/action_prompt/action_prompt.gd" id="3_qbdmn"]
+[ext_resource type="Texture2D" uid="uid://d3p242uythc22" path="res://UI/Menus/assets/P1 cursor.png" id="5_8q3o6"]
+[ext_resource type="PackedScene" uid="uid://bvwn2scbdei8m" path="res://UI/Menus/ability_button.tscn" id="5_meuoy"]
+[ext_resource type="PackedScene" uid="uid://doodjmci2iujk" path="res://UI/Menus/UI_animator.tscn" id="5_xt7v4"]
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("ability1animator", "ability2animator", "ability3animator")]
+[sub_resource type="InputEventKey" id="InputEventKey_8q3o6"]
+device = -1
+physical_keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_xt7v4"]
+device = -1
+physical_keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_meuoy"]
+device = -1
+physical_keycode = 4194328
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q3o6"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("abilityanimators")]
+process_mode = 3
 script = ExtResource("1_xafi3")
-ability1animator = NodePath("PlayTime/AbilitiesParent/Ability1/Ability1")
-ability2animator = NodePath("PlayTime/AbilitiesParent/Ability2/Ability1")
-ability3animator = NodePath("PlayTime/AbilitiesParent/Ability3/Ability1")
+abilityanimators = [NodePath("PlayTime/AbilitiesParent/Ability1/Ability1"), NodePath("PlayTime/AbilitiesParent/Ability2/Ability2"), NodePath("PlayTime/AbilitiesParent/Ability3/Ability3")]
 
 [node name="PlayTime" type="Control" parent="."]
 layout_mode = 3
@@ -25,61 +44,167 @@ position = Vector2(950, 560)
 position = Vector2(-100, 0)
 
 [node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability1"]
+custom_minimum_size = Vector2(0, 75)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
 
 [node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10/10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability1/Ability1"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+size_flags_vertical = 3
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability1"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_8q3o6")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
 [node name="Ability2" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
-position = Vector2(0, -50)
+position = Vector2(0, -75)
 
-[node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability2"]
+[node name="Ability2" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability2"]
+custom_minimum_size = Vector2(0, 75)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
 current_ability = 1
 ability_number = 1
 
-[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
+[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability2"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability2/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability2/Ability2"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+size_flags_vertical = 3
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability2"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_xt7v4")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
 [node name="Ability3" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
 position = Vector2(80, 0)
 
-[node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability3"]
+[node name="Ability3" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability3"]
+custom_minimum_size = Vector2(0, 75)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
 current_ability = 2
 ability_number = 2
 
-[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
+[node name="Counter" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability3"]
 layout_mode = 2
+theme = ExtResource("3_8q3o6")
 text = "Jump : 10"
 horizontal_alignment = 1
 
-[node name="KeyBinding" type="Label" parent="PlayTime/AbilitiesParent/Ability3/Ability1"]
+[node name="ActionPrompt" type="TextureRect" parent="PlayTime/AbilitiesParent/Ability3/Ability3"]
 layout_mode = 2
-text = "space"
-horizontal_alignment = 1
+size_flags_vertical = 3
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("3_qbdmn")
+action = "ability3"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventKey_meuoy")])
+metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
-[node name="AbilityMenu" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_wdcx8")
+[node name="AbilityMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="AbilityMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8q3o6")
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 50
+
+[node name="ButtonParent" type="VBoxContainer" parent="AbilityMenu/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="AbilityButton" parent="AbilityMenu/Panel/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/MarginContainer/ButtonParent/AbilityButton" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton2" parent="AbilityMenu/Panel/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/MarginContainer/ButtonParent/AbilityButton2" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.15
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton3" parent="AbilityMenu/Panel/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/MarginContainer/ButtonParent/AbilityButton3" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.2
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton4" parent="AbilityMenu/Panel/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/MarginContainer/ButtonParent/AbilityButton4" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="Cursor" type="Sprite2D" parent="."]
+position = Vector2(846, 553)
+texture = ExtResource("5_8q3o6")
+offset = Vector2(32, 32)
+
+[node name="UI_selection" type="Timer" parent="."]
+one_shot = true
+ignore_time_scale = true

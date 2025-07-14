@@ -4,7 +4,6 @@ class_name ability_container
 @export var current_ability : GlobalVariables.abilities
 @export var ability_number : int = 0
 @onready var counter: Label = $Counter
-@onready var key_binding: Label = $KeyBinding
 
 func _ready() -> void:
 	refresh()

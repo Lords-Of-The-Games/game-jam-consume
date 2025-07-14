@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Control
 
 const ABILITY_BUTTON = preload("res://UI/Menus/ability_button.tscn")
 
