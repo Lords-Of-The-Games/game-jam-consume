@@ -7,6 +7,8 @@ var current_ability3 : GlobalVariables.abilities
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ability1"):
 		jump()
+	if Input.is_action_just_pressed("ability2"):
+		MessageBus.took_damage.emit(3)
 	move_and_slide()
 	velocity += get_gravity() * delta
 

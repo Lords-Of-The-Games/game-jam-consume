@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://cweij2ro0qdjy"]
+
+[ext_resource type="Script" uid="uid://ckv1eqxyle5vm" path="res://UI/Menus/assign_abilities.gd" id="1_jn5iq"]
+[ext_resource type="PackedScene" uid="uid://bvwn2scbdei8m" path="res://UI/Menus/ability_button.tscn" id="2_1drn3"]
+[ext_resource type="PackedScene" uid="uid://doodjmci2iujk" path="res://UI/Menus/UI_animator.tscn" id="3_tr4l1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc4d5"]
+bg_color = Color(0, 0, 0, 0.294118)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_jn5iq")
+
+[node name="AbilityMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="AbilityMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rc4d5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilityMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DamageMenu" type="MarginContainer" parent="AbilityMenu/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ResourceAmountLabel" type="Label" parent="AbilityMenu/Panel/HBoxContainer/DamageMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Resources: 30"
+
+[node name="MarginContainer" type="MarginContainer" parent="AbilityMenu/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 50
+
+[node name="ButtonParent" type="VBoxContainer" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AbilityButton" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton2" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton2" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.15
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton3" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton3" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.2
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton4" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton4" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1

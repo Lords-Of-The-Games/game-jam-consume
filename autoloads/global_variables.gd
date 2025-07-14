@@ -2,6 +2,8 @@ extends Node
 
 enum abilities{JUMP, ATTACK, DASH, INTERACT}
 
+var total_resources : int = 30
+
 var ability_names : Dictionary = {abilities.JUMP : "Jump", abilities.ATTACK : "Attack", \
 abilities.DASH : "Dash", abilities.INTERACT : "Interact"}
 
