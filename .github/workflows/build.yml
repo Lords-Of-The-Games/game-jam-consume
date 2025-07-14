@@ -8,7 +8,7 @@ on:
 
 jobs:
   headless-check:
-    name: Headless Project Check
+    name: Headless Project Load
     runs-on: ubuntu-22.04
 
     steps:
