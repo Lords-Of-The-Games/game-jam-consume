@@ -4,18 +4,21 @@ var current_ability1 : GlobalVariables.abilities
 var current_ability2 : GlobalVariables.abilities
 var current_ability3 : GlobalVariables.abilities
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ability1"):
+		jump()
+	move_and_slide()
+	velocity += get_gravity() * delta
+
 func jump() -> void:
-	GlobalVariables.ability_uses[GlobalVariables.abilities.JUMP] -= 1
+	velocity.y = -500
 	MessageBus.ability_used.emit(GlobalVariables.abilities.JUMP)
 
 func attack() -> void:
-	GlobalVariables.ability_uses[GlobalVariables.abilities.ATTACK] -= 1
 	MessageBus.ability_used.emit(GlobalVariables.abilities.ATTACK)
 
 func dash() -> void:
-	GlobalVariables.ability_uses[GlobalVariables.abilities.DASH] -= 1
 	MessageBus.ability_used.emit(GlobalVariables.abilities.DASH)
 
 func interact() -> void:
-	GlobalVariables.ability_uses[GlobalVariables.abilities.INTERACT] -= 1
 	MessageBus.ability_used.emit(GlobalVariables.abilities.INTERACT)
