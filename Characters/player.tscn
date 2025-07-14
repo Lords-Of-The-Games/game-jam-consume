@@ -1,5 +1,5 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcdnlh4mph61n"]
-
+asd
 [ext_resource type="PackedScene" uid="uid://cyfgaflg7oum2" path="res://UI/runtime_ui.tscn" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://bsd1cpks8bdlg" path="res://Characters/character_body_2d.gd" id="1_eovys"]
 
