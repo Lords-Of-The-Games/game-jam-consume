@@ -93,9 +93,9 @@ func setup() -> void:
 		"self_modulate" : deepmhasize_modulate
 	}
 	entrance_values = {"scale" : entrance_scale, 
-		"position" : target.position + entrance_position, 
+		"position" : target.position + target.size/2, 
 		"rotation" : target.rotation + entrance_rotation, 
-		"size" : target.size +  entrance_size, 
+		"size" : entrance_size, 
 		"self_modulate" : entrance_modulate
 	}
 	exit_values = {"scale" : entrance_scale, 
@@ -131,6 +131,7 @@ func on_enter(finished_waiting : bool = false) -> void:
 		add_tween(entrance_values, true, 0.0, IMMEDIATE_TRANSITION, hover_easing, 0.0)
 		await get_tree().create_timer(actual_entrance_delay).timeout
 		add_tween(default_values, parallel_animations, actual_entrance_time, entrance_transition, hover_easing, 0.0, true)
+
 func exit():
 	var tween = self.create_tween()
 	tween.set_parallel(parallel_animations)
