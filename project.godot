@@ -24,7 +24,7 @@ ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autol
 GlobalVariables="*res://autoloads/global_variables.gd"
 MessageBus="*res://autoloads/message_bus.gd"
 PromptManager="*res://addons/input_prompts/input_prompt_manager.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+MadTalkGlobals="*res://addons/madtalk/runtime/MadTalkGlobals.tscn"
 
 [dialogic]
 
@@ -52,7 +52,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/input_prompts/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/input_prompts/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg", "res://addons/madtalk/plugin.cfg")
 
 [gui]
 
