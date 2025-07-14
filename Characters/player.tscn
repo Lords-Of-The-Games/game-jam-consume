@@ -21,6 +21,7 @@ shape = SubResource("CapsuleShape2D_ywxx0")
 [node name="PlayerCamera" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="UI" parent="CharacterBody2D/PlayerCamera" instance=ExtResource("1_5mj4t")]
+visible = false
 
 [node name="InteractionArea" type="Area2D" parent="CharacterBody2D"]
 collision_layer = 0
