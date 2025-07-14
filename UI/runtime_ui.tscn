@@ -38,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AbilitiesParent" type="Sprite2D" parent="PlayTime"]
-position = Vector2(950, 560)
+position = Vector2(820, 460)
 
 [node name="Ability1" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
 position = Vector2(-100, 0)
