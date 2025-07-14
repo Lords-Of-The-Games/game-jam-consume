@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcdnlh4mph61n"]
+[gd_scene load_steps=5 format=3 uid="uid://dcdnlh4mph61n"]
 
 [ext_resource type="PackedScene" uid="uid://cyfgaflg7oum2" path="res://UI/runtime_ui.tscn" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://bsd1cpks8bdlg" path="res://Characters/character_body_2d.gd" id="1_eovys"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywxx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eovys"]
+size = Vector2(99, 81)
 
 [node name="Player" type="Node2D"]
 
@@ -18,3 +21,10 @@ shape = SubResource("CapsuleShape2D_ywxx0")
 [node name="PlayerCamera" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="UI" parent="CharacterBody2D/PlayerCamera" instance=ExtResource("1_5mj4t")]
+
+[node name="InteractionArea" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea"]
+shape = SubResource("RectangleShape2D_eovys")
