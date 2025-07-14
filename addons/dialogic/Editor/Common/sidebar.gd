@@ -79,7 +79,7 @@ func _ready() -> void:
 	%GroupingOptions.set_item_icon(3, get_theme_icon("AnimationTrackList", "EditorIcons"))
 	%GroupingOptions.item_selected.connect(_on_grouping_changed)
 
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	if DialogicUtil.get_editor_setting("sidebar_collapsed", false):
 		_hide_sidebar()
 

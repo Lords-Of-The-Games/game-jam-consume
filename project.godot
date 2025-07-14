@@ -29,7 +29,11 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"trial_timeline": "res://dialogic/timeline/trial_timeline.dtl"
+}
+variables={}
+glossary/default_case_sensitive=true
 
 [display]
 
