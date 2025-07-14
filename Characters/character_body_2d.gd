@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 		jump()
 	if Input.is_action_just_pressed("ability2"):
 		Dialogic.start("trial_timeline")
-		#MessageBus.took_damage.emit(3)
 	move_and_slide()
 	velocity += get_gravity() * delta
 	for i in interaction_area.get_overlapping_bodies():
