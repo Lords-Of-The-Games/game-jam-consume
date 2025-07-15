@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://d11hp5ohb787u"]
+
+[ext_resource type="Script" uid="uid://bwt8o40mdlpf1" path="res://game_nodes/interactable_master.gd" id="1_tn6rs"]
+[ext_resource type="Resource" uid="uid://bu3fu21tcjqbs" path="res://game_nodes/saved_data/the_other_you1.tres" id="2_3kkmm"]
+[ext_resource type="PackedScene" uid="uid://doodjmci2iujk" path="res://UI/Menus/UI_animator.tscn" id="2_uhftd"]
+
+[node name="Node2D" type="StaticBody2D" groups=["interactable"]]
+script = ExtResource("1_tn6rs")
+saved_resource = ExtResource("2_3kkmm")
+
+[node name="Interact" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -100.0
+offset_right = 34.5
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Interact"
+
+[node name="Node" parent="Interact" instance=ExtResource("2_uhftd")]
+entrance_animation = true
+
+[node name="GrayedOut" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -100.0
+offset_right = 90.5
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.392157)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+text = "Interact (out of uses)"
+
+[node name="Node" parent="GrayedOut" instance=ExtResource("2_uhftd")]
+entrance_animation = true

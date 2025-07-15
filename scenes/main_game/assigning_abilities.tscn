@@ -9,6 +9,7 @@ bg_color = Color(0, 0, 0, 0.294118)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_jn5iq")
+game_scene_path = "uid://dbbqdy3s8mmlm"
 
 [node name="AbilityMenu" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -61,6 +62,7 @@ layout_mode = 2
 
 [node name="AbilityButton" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
 layout_mode = 2
+damaged = true
 
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton" instance=ExtResource("3_tr4l1")]
 connect_as_button = true
@@ -72,6 +74,7 @@ hover_easing = 1
 
 [node name="AbilityButton2" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
 layout_mode = 2
+damaged = true
 
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton2" instance=ExtResource("3_tr4l1")]
 connect_as_button = true
@@ -84,6 +87,7 @@ hover_easing = 1
 
 [node name="AbilityButton3" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
 layout_mode = 2
+damaged = true
 
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton3" instance=ExtResource("3_tr4l1")]
 connect_as_button = true
@@ -96,6 +100,7 @@ hover_easing = 1
 
 [node name="AbilityButton4" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
 layout_mode = 2
+damaged = true
 
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton4" instance=ExtResource("3_tr4l1")]
 connect_as_button = true

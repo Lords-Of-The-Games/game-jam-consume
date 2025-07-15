@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dniqtxddhrgrp"]
+
+[ext_resource type="PackedScene" uid="uid://d11hp5ohb787u" path="res://game_nodes/interactable_master.tscn" id="1_4cm65"]
+[ext_resource type="Script" uid="uid://vue0r0mfdte8" path="res://game_nodes/npcs/yourself.gd" id="2_jeyle"]
+[ext_resource type="Texture2D" uid="uid://barkx4ev6d3tm" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="3_jeyle"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r38s4"]
+atlas = ExtResource("3_jeyle")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3m1j"]
+atlas = ExtResource("3_jeyle")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwr3s"]
+atlas = ExtResource("3_jeyle")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d6xd"]
+atlas = ExtResource("3_jeyle")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r38s4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r38s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3m1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwr3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d6xd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jeyle"]
+radius = 7.0
+height = 26.0
+
+[node name="Yourself" instance=ExtResource("1_4cm65")]
+script = ExtResource("2_jeyle")
+
+[node name="Interact" parent="." index="0"]
+offset_left = -34.0
+offset_top = -78.0
+offset_right = 35.0
+offset_bottom = -52.0
+
+[node name="GrayedOut" parent="." index="1"]
+offset_left = -90.0
+offset_top = -78.0
+offset_right = 91.0
+offset_bottom = -52.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(1, -12)
+sprite_frames = SubResource("SpriteFrames_r38s4")
+frame_progress = 0.0796963
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(1, -13)
+shape = SubResource("CapsuleShape2D_jeyle")
