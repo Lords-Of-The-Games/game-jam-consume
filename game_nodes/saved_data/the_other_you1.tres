@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1_ysihc")
-spawn = true
+spawn = false
 interacted = 0
 interaction_disabled = false
 conversation_choices = Dictionary[String, String]({
 "first_conversation": "had it"
 })
+hp = 0
 metadata/_custom_type_script = "uid://bk71irp45qgrn"

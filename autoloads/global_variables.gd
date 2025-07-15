@@ -28,3 +28,7 @@ func _ready() -> void:
 		for i in ability_uses.keys():
 			ability_uses[i] = max_ability_uses[i]
 #endregion
+
+#region game utilities
+const SAVE_GAME_PATH : String = "user://"
+#endregion

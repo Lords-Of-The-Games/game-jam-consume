@@ -45,6 +45,8 @@ radius = 7.0
 height = 26.0
 
 [node name="Yourself" instance=ExtResource("1_4cm65")]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("2_jeyle")
 
 [node name="Interact" parent="." index="0"]
