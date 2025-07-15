@@ -8,8 +8,7 @@ var current_ability3 : GlobalVariables.abilities
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ability1"):
 		jump()
-	if Input.is_action_just_pressed("ability2"):
-		Dialogic.start("trial_timeline")
+
 	move_and_slide()
 	velocity += get_gravity() * delta
 	for i in interaction_area.get_overlapping_bodies():
