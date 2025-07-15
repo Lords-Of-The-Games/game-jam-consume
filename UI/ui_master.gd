@@ -28,6 +28,7 @@ var transitioning : bool = false
 
 
 func _ready() -> void:
+	show()
 	call_deferred("late_ready")
 
 func late_ready() -> void:
@@ -116,10 +117,7 @@ func took_damage(_amount) -> void:
 	taking_damage = true
 	damage_to_resolve = _amount
 	Engine.time_scale = 1.0
-	get_tree().paused = true
-	var was_first_button : bool = true
-	var child : int = 0
-	
+	get_tree().paused = true	
 	update_buttons()
 
 	for i in damage_buttons.get_children():
@@ -143,7 +141,7 @@ func resolve_damage(which_ability : GlobalVariables.abilities) -> void:
 	damage_to_resolve -= 1
 	damage_label.text = str("Damage taken: ", damage_to_resolve)
 	GlobalVariables.ability_uses[which_ability] -= 1
-	update_buttons()
+	update_buttons(false)
 	if damage_to_resolve <= 0:
 		await get_tree().create_timer(1.0).timeout
 		unpause()
@@ -155,6 +153,9 @@ func change_menu () -> void:
 	
 	if menu_open:
 		unpause()
+		return
+
+	if get_tree().paused:
 		return
 
 	slowmo()
@@ -201,8 +202,7 @@ func unpause() -> void:
 	menu_open = false
 	transitioning = false
 
-func update_buttons() -> void:
-	var was_first_button : bool = true
+func update_buttons(was_first_button : bool = true) -> void:
 	var child : int = 0
 	for ability in GlobalVariables.ability_names.keys():
 		var current_button : AbilityButton = button_parent.get_child(child)
