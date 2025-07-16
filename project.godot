@@ -36,6 +36,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "first_conversation": "res://dialogic/timeline/first_conversation.dtl",
+"second_conversation": "res://dialogic/timeline/second_conversation.dtl",
 "trial_timeline": "res://dialogic/timeline/trial_timeline.dtl"
 }
 variables={}
@@ -107,6 +108,7 @@ folder_colors={
 [global_group]
 
 interactable=""
+player=""
 
 [gui]
 
@@ -151,7 +153,10 @@ locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/
 [layer_names]
 
 2d_physics/layer_1="general"
+2d_physics/layer_2="hurtboxes"
 2d_physics/layer_6="Interactables"
+2d_physics/layer_7="enemies"
+2d_physics/layer_8="player"
 
 [maaacks_menus_template]
 

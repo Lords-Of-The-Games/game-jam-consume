@@ -345,7 +345,9 @@ size = Vector2(99, 81)
 
 [node name="Player" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(0, -15)
+collision_layer = 128
 script = ExtResource("1_eovys")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
