@@ -6,6 +6,7 @@ func enter() -> void:
 
 func play_dead() -> void:
 	animated_sprite_2d.play("dead")
+	parent.die()
 
 func process_physics(_delta: float, _direction : Vector2) -> EnemyState:
 	if !parent.is_on_floor():

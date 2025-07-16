@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coor0rkdsxssj"]
+
+[ext_resource type="Script" uid="uid://cws7at2yh86i6" path="res://game_nodes/triggers_events/events/queue_free/queue_free_event.gd" id="1_mirw4"]
+
+[node name="QueueFreeEvent" type="Node2D"]
+script = ExtResource("1_mirw4")
