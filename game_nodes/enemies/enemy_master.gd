@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
+signal death(body)
 
 @export var saved_data : SavedDataResource
 @export var max_hp : int = 3
@@ -22,7 +23,8 @@ func _ready() -> void:
 	state_machine.initialize(self)
 
 func die() -> void:
-	state_machine.change_state(state_machine.states["dead"])
+	death.emit(self)
+	print_debug("emitted death")
 	save()
 
 func save() -> void:
@@ -38,9 +40,9 @@ func take_damage(amount : int, player_position : Vector2) -> void:
 	current_hp -= amount
 	hp_bar.text = str(current_hp)
 	if current_hp <= 0:
-		die()
+		state_machine.change_state(state_machine.states["dead"])
 		return
 	if !resist_stagger:
-		state_machine.billboard["stagger_direction"] = global_position - player_position
-		state_machine.change_state(state_machine.states["stagger"])
+		state_machine.billboard["stagger_direction"] = (global_position - player_position).normalized()
+		state_machine.change_state(state_machine.states["staggering"])
 	save()

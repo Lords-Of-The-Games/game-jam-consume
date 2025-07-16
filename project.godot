@@ -109,6 +109,7 @@ folder_colors={
 
 interactable=""
 player=""
+enemy=""
 
 [gui]
 

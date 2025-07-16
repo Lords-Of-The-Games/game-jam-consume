@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dbbqdy3s8mmlm"]
+[gd_scene load_steps=21 format=4 uid="uid://dbbqdy3s8mmlm"]
 
 [ext_resource type="Texture2D" uid="uid://b11aqocciq27s" path="res://assets/RockyWorld_v1.1/01. Rocky Level/background1.png" id="1_u2et0"]
 [ext_resource type="Texture2D" uid="uid://cxduc7x6tl5f" path="res://assets/PixelFantasy_Caves_1.0/background3.png" id="1_yhq31"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bvog27mttrg7d" path="res://game_nodes/enemies/enemy_master.tscn" id="7_u2et0"]
 [ext_resource type="Resource" uid="uid://bbgyu7nywrm4o" path="res://scenes/main_game/scene1/slime3.tres" id="9_akme6"]
 [ext_resource type="Resource" uid="uid://catndltgbikmo" path="res://scenes/main_game/scene1/slime2.tres" id="9_w5j21"]
+[ext_resource type="PackedScene" uid="uid://piqvpxjcl5m6" path="res://game_nodes/triggers_events/triggers/enemies_killed/enemies_killed.tscn" id="11_43e3d"]
+[ext_resource type="PackedScene" uid="uid://coor0rkdsxssj" path="res://game_nodes/triggers_events/events/queue_free/queue_free_event.tscn" id="12_hmxg5"]
+[ext_resource type="Texture2D" uid="uid://c6ld5qx3hgto3" path="res://assets/brackeys_platformer_assets/sprites/green_platform.png" id="13_bmfqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wapv1"]
 texture = ExtResource("2_6dy84")
@@ -5619,6 +5622,12 @@ size = Vector2(90, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dibdj"]
 size = Vector2(79, 35)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjsys"]
+size = Vector2(334, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pbf5"]
+size = Vector2(64, 10)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TextureRect2" type="TextureRect" parent="."]
@@ -5649,7 +5658,7 @@ tile_set = SubResource("TileSet_c3kk6")
 
 [node name="Player" parent="." instance=ExtResource("4_6dy84")]
 unique_name_in_owner = true
-position = Vector2(37, 45)
+position = Vector2(21, 60)
 
 [node name="Yourself" parent="." instance=ExtResource("6_wapv1")]
 position = Vector2(342, 142)
@@ -5681,6 +5690,11 @@ states = {
 }
 
 [node name="Attacking" parent="Slime2/StateMachine" index="3" node_paths=PackedStringArray("states")]
+states = {
+"chasing": NodePath("../Chasing")
+}
+
+[node name="Staggering" parent="Slime2/StateMachine" index="4" node_paths=PackedStringArray("states")]
 states = {
 "chasing": NodePath("../Chasing")
 }
@@ -5717,9 +5731,43 @@ states = {
 "chasing": NodePath("../Chasing")
 }
 
+[node name="Staggering" parent="Slime3/StateMachine" index="4" node_paths=PackedStringArray("states")]
+states = {
+"chasing": NodePath("../Chasing")
+}
+
 [node name="CollisionShape2D" parent="Slime3/ChaseBox" index="0"]
 position = Vector2(0.5, -17.5)
 shape = SubResource("RectangleShape2D_dibdj")
+
+[node name="Events_Triggers" type="Node2D" parent="."]
+
+[node name="EnemiesKilled" parent="Events_Triggers" instance=ExtResource("11_43e3d")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Events_Triggers/EnemiesKilled"]
+position = Vector2(1366, 184)
+shape = SubResource("RectangleShape2D_wjsys")
+
+[node name="QueueFreeEvent" parent="Events_Triggers/EnemiesKilled/CollisionShape2D" node_paths=PackedStringArray("triggers") instance=ExtResource("12_hmxg5")]
+position = Vector2(-1366, -184)
+triggers = [NodePath("../..")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Events_Triggers/EnemiesKilled/CollisionShape2D/QueueFreeEvent"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Events_Triggers/EnemiesKilled/CollisionShape2D/QueueFreeEvent/StaticBody2D"]
+position = Vector2(1545, 225)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_2pbf5")
+
+[node name="Sprite2D" type="TextureRect" parent="Events_Triggers/EnemiesKilled/CollisionShape2D/QueueFreeEvent/StaticBody2D"]
+offset_left = 1540.0
+offset_top = 257.0
+offset_right = 1604.0
+offset_bottom = 266.0
+rotation = -1.57079
+texture = ExtResource("13_bmfqu")
+expand_mode = 3
+stretch_mode = 1
 
 [editable path="Player"]
 [editable path="Slime2"]

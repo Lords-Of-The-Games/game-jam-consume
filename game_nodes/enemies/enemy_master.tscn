@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bvog27mttrg7d"]
+[gd_scene load_steps=52 format=3 uid="uid://bvog27mttrg7d"]
 
 [ext_resource type="Script" uid="uid://dra572edhsbnu" path="res://game_nodes/enemies/enemy_master.gd" id="1_srl5c"]
 [ext_resource type="Texture2D" uid="uid://c0cbbclsbh000" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="2_blv32"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dfsy52rnj4ds" path="res://game_nodes/enemies/slime_basic/state_idle.gd" id="6_w2erg"]
 [ext_resource type="Script" uid="uid://dfhrgqib1ec17" path="res://game_nodes/enemies/state_chasing.gd" id="7_jcqc4"]
 [ext_resource type="Script" uid="uid://byx4lysqa8nc" path="res://game_nodes/enemies/slime_basic/state_attacking.gd" id="8_lyrif"]
+[ext_resource type="Script" uid="uid://yexonevnjc2t" path="res://game_nodes/enemies/state_staggering.gd" id="9_kwxt0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_elv78"]
 atlas = ExtResource("2_blv32")
@@ -300,7 +301,7 @@ size = Vector2(162, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqc4"]
 size = Vector2(50, 33)
 
-[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "state_machine")]
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "state_machine") groups=["enemy"]]
 collision_layer = 64
 collision_mask = 65
 script = ExtResource("1_srl5c")
@@ -356,6 +357,12 @@ one_shot = true
 script = ExtResource("8_lyrif")
 attack_speed = 200.0
 animation_name = "attack"
+states = {
+"chasing": NodePath("../Chasing")
+}
+
+[node name="Staggering" type="Node" parent="StateMachine" node_paths=PackedStringArray("states")]
+script = ExtResource("9_kwxt0")
 states = {
 "chasing": NodePath("../Chasing")
 }

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://piqvpxjcl5m6"]
+
+[ext_resource type="Script" uid="uid://s8f0ys2fvx5l" path="res://game_nodes/triggers_events/triggers/enemies_killed/enemies_killed.gd" id="1_8lko7"]
+
+[node name="EnemiesKilled" type="Area2D"]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
+script = ExtResource("1_8lko7")
