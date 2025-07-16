@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cyfgaflg7oum2"]
+[gd_scene load_steps=13 format=3 uid="uid://cyfgaflg7oum2"]
 
 [ext_resource type="Script" uid="uid://crldsix7litq0" path="res://UI/ui_master.gd" id="1_xafi3"]
 [ext_resource type="Script" uid="uid://bdty52pb11ws5" path="res://UI/ability_container.gd" id="2_2geti"]
@@ -24,24 +24,41 @@ physical_keycode = 4194328
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8q3o6"]
 bg_color = Color(0, 0, 0, 0.294118)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meuoy"]
+bg_color = Color(0.560784, 0.560784, 0.560784, 0.498039)
+
 [node name="UI" type="CanvasLayer" node_paths=PackedStringArray("abilityanimators")]
 process_mode = 3
 script = ExtResource("1_xafi3")
 abilityanimators = [NodePath("PlayTime/AbilitiesParent/Ability1/Ability1"), NodePath("PlayTime/AbilitiesParent/Ability2/Ability2"), NodePath("PlayTime/AbilitiesParent/Ability3/Ability3")]
 
-[node name="PlayTime" type="Control" parent="."]
-layout_mode = 3
+[node name="PlayTime" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 30
 
-[node name="AbilitiesParent" type="Sprite2D" parent="PlayTime"]
-position = Vector2(820, 460)
+[node name="AbilitiesParent" type="GridContainer" parent="PlayTime"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
 
-[node name="Ability1" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
-position = Vector2(-100, 0)
+[node name="Separator" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ability1" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability1"]
 custom_minimum_size = Vector2(0, 75)
@@ -66,8 +83,15 @@ icon = 0
 events = Array[InputEvent]([SubResource("InputEventKey_meuoy")])
 metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
-[node name="Ability2" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
-position = Vector2(0, -75)
+[node name="Separator2" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ability2" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Ability2" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability2"]
 custom_minimum_size = Vector2(0, 75)
@@ -94,8 +118,15 @@ icon = 0
 events = Array[InputEvent]([SubResource("InputEventKey_qpgyn")])
 metadata/_custom_type_script = "uid://cxflwlg6b2dje"
 
-[node name="Ability3" type="Sprite2D" parent="PlayTime/AbilitiesParent"]
-position = Vector2(80, 0)
+[node name="Separator3" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ability3" type="Control" parent="PlayTime/AbilitiesParent"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Ability3" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability3"]
 custom_minimum_size = Vector2(0, 75)
@@ -217,13 +248,20 @@ theme_override_constants/margin_bottom = 50
 [node name="ButtonParent" type="VBoxContainer" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="ResourceLabel" type="Label" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent"]
+layout_mode = 2
+text = "Resources: 30"
+
 [node name="AbilityButton" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
 layout_mode = 2
 
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton" instance=ExtResource("5_xt7v4")]
 connect_as_button = true
 entrance_animation = true
-hover_rotation = 0.15
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
 entrance_delay = 0.0
 entrance_transition = 11
 hover_easing = 1
@@ -234,7 +272,10 @@ layout_mode = 2
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton2" instance=ExtResource("5_xt7v4")]
 connect_as_button = true
 entrance_animation = true
-hover_rotation = 0.15
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
 entrance_time = 0.15
 entrance_delay = 0.0
 entrance_transition = 11
@@ -246,7 +287,10 @@ layout_mode = 2
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton3" instance=ExtResource("5_xt7v4")]
 connect_as_button = true
 entrance_animation = true
-hover_rotation = 0.15
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
 entrance_time = 0.2
 entrance_delay = 0.0
 entrance_transition = 11
@@ -258,11 +302,50 @@ layout_mode = 2
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton4" instance=ExtResource("5_xt7v4")]
 connect_as_button = true
 entrance_animation = true
-hover_rotation = 0.15
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
 entrance_time = 0.25
 entrance_delay = 0.0
 entrance_transition = 11
 hover_easing = 1
+
+[node name="MessagePanel" type="Panel" parent="AbilityMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_meuoy")
+
+[node name="MessageLabel" type="Label" parent="AbilityMenu/Panel/MessagePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "blableblibloblu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Node" parent="AbilityMenu/Panel/MessagePanel" node_paths=PackedStringArray("wait_for") instance=ExtResource("5_xt7v4")]
+entrance_animation = true
+wait_for = NodePath("../../HBoxContainer/MarginContainer/ButtonParent/AbilityButton4/Node")
+entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+exit_transition = 11
+hover_easing = 2
+parallel_animations = false
 
 [node name="Cursor" type="Sprite2D" parent="."]
 position = Vector2(846, 553)

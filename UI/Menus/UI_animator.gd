@@ -153,7 +153,11 @@ func blip() -> void:
 	if hover_rotation == 0.0:
 		return
 	var tween = create_tween()
+	tween.set_parallel(true)
 	tween.tween_property(target,"rotation",default_values["rotation"],hover_time).set_trans(hover_transition).set_ease(hover_easing )
+	if hover_modulate == Color.WHITE:
+		return
+	tween.tween_property(target,"self_modulate",default_values["self_modulate"],hover_time).set_trans(hover_transition).set_ease(hover_easing )
 func deemphasize():
 	add_tween(deemphasize_values, parallel_animations, deepmhasize_time, hover_transition, hover_easing, deepmhasize_delay)
 

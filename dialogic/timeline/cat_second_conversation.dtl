@@ -1,0 +1,14 @@
+You pet the cat
+kitten: Meow meow meow!
+The cat looks like it's happy to see you.
+protagonist: Hey, buddy. How are you getting settled in? 
+protagonist: I don't know how many times we've had this conversation.
+protagonist: This cave does weird things to my head.
+protagonist: What was your name, again?
+- Fluffball
+- Captain Fluff
+- George Fluffington, the Third
+protagonist: I'll just call you Cat.
+protagonist: I'm starting to get tired.
+protagonist (tired): Maybe this run I'll just stay here to pet you and click restart.
+[signal arg="restart"]

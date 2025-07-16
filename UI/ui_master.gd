@@ -2,6 +2,7 @@ extends CanvasLayer
 
 const ABILITY_BUTTON = preload("res://UI/Menus/ability_button.tscn")
 
+
 @export var abilityanimators : Array[ability_container]
 
 @onready var play_time: Control = $PlayTime
@@ -10,6 +11,9 @@ const ABILITY_BUTTON = preload("res://UI/Menus/ability_button.tscn")
 @onready var damage_buttons: VBoxContainer =$AbilityMenu/Panel/HBoxContainer/DamageMenu/VBoxContainer/DamageButtons
 @onready var damage_label: Label = $AbilityMenu/Panel/HBoxContainer/DamageMenu/VBoxContainer/DamageLabel
 @onready var damage_menu: MarginContainer = $AbilityMenu/Panel/HBoxContainer/DamageMenu
+@onready var resource_label: Label = $AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/ResourceLabel
+@onready var message_panel: Panel = $AbilityMenu/Panel/MessagePanel
+@onready var message_label: Label = $AbilityMenu/Panel/MessagePanel/MessageLabel
 
 @onready var cursor: Sprite2D = $Cursor
 
@@ -25,6 +29,7 @@ var reassigning_ability : GlobalVariables.abilities = GlobalVariables.abilities.
 
 var menu_open : bool = false
 var transitioning : bool = false
+var receiving_message : bool = false
 
 
 func _ready() -> void:
@@ -36,16 +41,27 @@ func late_ready() -> void:
 	MessageBus.took_damage.connect(took_damage)
 	MessageBus.opened_menu.connect(change_menu)
 	MessageBus.ability_selected_in_menu.connect(assign_ability)
+	MessageBus.received_message.connect(receive_message)
 	#for child in button_parent.get_children():
 		#child.animation_node.wait_for = ability_entrance_animator
 	$PlayTime.show()
 	$AbilityMenu.hide()
 	cursor.hide()
+	message_panel.hide()
+	message_label.hide()
 	#damage_label.hide()
 	#damage_buttons.hide()
 
 func _process(_delta: float) -> void:
+	if receiving_message:
+		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ability1"):
+			if !transitioning:
+				acknowledge_message()
+				ui_selection_timer.start(selection_cooldown)
+		return
+
 	if Input.is_action_just_pressed("open_menu"):
+		ui_selection_timer.start(selection_cooldown)
 		MessageBus.opened_menu.emit()
 	if !selecting_ability:
 		return
@@ -62,6 +78,7 @@ func _process(_delta: float) -> void:
 		focus_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ability1"):
+		ui_selection_timer.start(selection_cooldown)
 		set_ability()
 
 func set_ability() -> void:
@@ -86,6 +103,8 @@ func ability_used(which_ability : GlobalVariables.abilities) -> void:
 		abilityanimators[2].refresh()
 
 func assign_ability(which_ability : GlobalVariables.abilities, damaged : bool = false) -> void:
+	if !ui_selection_timer.is_stopped():
+		return
 	if damaged:
 		for i in damage_buttons.get_children():
 			if i.visible:
@@ -146,6 +165,37 @@ func resolve_damage(which_ability : GlobalVariables.abilities) -> void:
 		await get_tree().create_timer(1.0).timeout
 		unpause()
 
+func receive_message(original_message : String, new_message : String, delay : float, important : bool = false) -> void:
+	pause()
+	resource_label.text = str("")
+	var child : int = 0
+	for ability in GlobalVariables.ability_names.keys():
+		var current_button : AbilityButton = button_parent.get_child(child + 1)
+		current_button.text = ""
+		child += 1
+	
+	transitioning = true
+	receiving_message = true
+	message_panel.show()
+	await $AbilityMenu/Panel/MessagePanel/Node.finished_entering
+	message_label.show()
+	message_label.text = original_message
+	await get_tree().create_timer(delay).timeout
+	message_label.text = new_message
+	transitioning = false
+	if !important:
+		message_panel.hide()
+		message_label.hide()
+		receiving_message = false
+		
+
+func acknowledge_message() -> void:
+	receiving_message = false
+	message_panel.hide()
+	message_label.hide()
+	update_buttons_slowly()
+	
+	
 #region opening and closing ability menu
 func change_menu () -> void:
 	if transitioning or taking_damage:
@@ -167,6 +217,7 @@ func slowmo() -> void:
 	tween.tween_property(Engine, "time_scale", 0.01, 0.1)
 	await tween.finished
 	pause()
+	update_buttons()
 
 func pause() -> void:
 	damage_label.hide()
@@ -175,13 +226,13 @@ func pause() -> void:
 	Engine.time_scale = 1.0
 	MessageBus.menu_finished_slowing.emit()
 	get_tree().paused = true
-	update_buttons()
+	#update_buttons()
 	
 	$PlayTime.hide()
 	$AbilityMenu.show()
 
 	transitioning = false
-	menu_open = true
+	menu_open = true 
 
 func unpause() -> void:
 	for i in abilityanimators:
@@ -202,10 +253,36 @@ func unpause() -> void:
 	menu_open = false
 	transitioning = false
 
-func update_buttons(was_first_button : bool = true) -> void:
+func update_buttons_slowly(delay : float = 0.5) -> void:
+	menu_open = true
+	transitioning = true
+	await get_tree().create_timer(delay).timeout
+	resource_label.text = str("Humanity:", GlobalVariables.total_resources)
 	var child : int = 0
 	for ability in GlobalVariables.ability_names.keys():
-		var current_button : AbilityButton = button_parent.get_child(child)
+		await get_tree().create_timer(delay).timeout
+		var current_button : AbilityButton = button_parent.get_child(child + 1)
+		current_button.mouse_entered.emit()
+		current_button.ability = ability
+		var target_text = str( GlobalVariables.ability_names[ability], " : ", \
+		GlobalVariables.ability_uses[ability], "/", GlobalVariables.max_ability_uses[ability])
+		current_button.text = target_text
+		child += 1
+	
+	child = 0
+	for ability in GlobalVariables.ability_names.keys():
+		var current_button : AbilityButton = button_parent.get_child(child + 1)
+		current_button.mouse_exited.emit()
+		child += 1
+	await get_tree().create_timer(delay).timeout
+	button_parent.get_child(1).grab_focus()
+	transitioning = false
+	
+func update_buttons(was_first_button : bool = true) -> void:
+	resource_label.text = str("Humanity:", GlobalVariables.total_resources)
+	var child : int = 0
+	for ability in GlobalVariables.ability_names.keys():
+		var current_button : AbilityButton = button_parent.get_child(child + 1)
 		current_button.ability = ability
 		var target_text = str( GlobalVariables.ability_names[ability], " : ", \
 		GlobalVariables.ability_uses[ability], "/", GlobalVariables.max_ability_uses[ability])
