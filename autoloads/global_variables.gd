@@ -1,6 +1,6 @@
 extends Node
 
-enum abilities{JUMP, ATTACK, DASH, INTERACT}
+enum abilities{NONE, JUMP, ATTACK, DASH, INTERACT, DANCE}
 
 
 #region Meta game manager
@@ -9,6 +9,12 @@ var total_resources : int = 30
 #endregion
 
 #region Abilities
+func add_new_ability(_ability : abilities, _name : String, max_uses : int, cost : int = 1) -> void:
+	ability_names[_ability] = _name
+	max_ability_uses[_ability] = max_uses
+	ability_uses[_ability] = max_uses
+	ability_costs[_ability] = cost
+
 var ability_names : Dictionary = {abilities.JUMP : "Jump", abilities.ATTACK : "Attack", \
 abilities.DASH : "Dash", abilities.INTERACT : "Interact"}
 

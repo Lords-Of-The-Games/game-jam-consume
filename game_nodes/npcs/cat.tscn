@@ -121,6 +121,8 @@ animations = [{
 size = Vector2(30, 28)
 
 [node name="Cat" instance=ExtResource("1_kbsm8")]
+collision_layer = 32
+collision_mask = 0
 script = ExtResource("2_mg0cq")
 saved_resource = ExtResource("3_mg0cq")
 

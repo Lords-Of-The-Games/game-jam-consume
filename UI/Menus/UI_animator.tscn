@@ -4,3 +4,6 @@
 
 [node name="Node" type="Node"]
 script = ExtResource("1_g4cku")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

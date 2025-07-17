@@ -26,7 +26,7 @@ MessageBus="*res://autoloads/message_bus.gd"
 PromptManager="*res://addons/input_prompts/input_prompt_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Utils="*res://autoloads/utils.gd"
-GameManager="*res://autoloads/game_manager.gd"
+GameManager="*res://autoloads/GameManager.tscn"
 
 [dialogic]
 
@@ -40,6 +40,7 @@ directories/dtl_directory={
 "cat_second_conversation": "res://dialogic/timeline/cat_second_conversation.dtl",
 "find_kitten": "res://dialogic/timeline/find_kitten.dtl",
 "first_conversation": "res://dialogic/timeline/first_conversation.dtl",
+"other_you_third_conversation": "res://dialogic/timeline/other_you_third_conversation.dtl",
 "second_conversation": "res://dialogic/timeline/second_conversation.dtl",
 "trial_timeline": "res://dialogic/timeline/trial_timeline.dtl"
 }

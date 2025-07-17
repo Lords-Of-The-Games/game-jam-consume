@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SavedDataResource" load_steps=2 format=3 uid="uid://cpi7hqqjlricc"]
+
+[ext_resource type="Script" uid="uid://bk71irp45qgrn" path="res://game_nodes/saved_data/save_data_resource_master.gd" id="1_tpi2c"]
+
+[resource]
+script = ExtResource("1_tpi2c")
+spawn = false
+interacted = 0
+interaction_disabled = false
+conversation_choices = Dictionary[String, String]({
+"first_conversation": "not",
+"other_you_third_conversation": "not",
+"second_conversation": "not"
+})
+hp = 0
+metadata/_custom_type_script = "uid://bk71irp45qgrn"
