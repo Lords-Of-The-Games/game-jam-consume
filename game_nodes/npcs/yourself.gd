@@ -7,7 +7,6 @@ func late_ready() -> void:
 
 func interact() -> void:
 	super()
-	GlobalVariables.ability_uses[GlobalVariables.abilities.INTERACT] -= 1
 	handle_dialogue_logic()
 
 func handle_dialogue_logic():

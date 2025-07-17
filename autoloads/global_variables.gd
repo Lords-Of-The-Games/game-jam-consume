@@ -6,6 +6,7 @@ enum abilities{NONE, JUMP, ATTACK, DASH, INTERACT, DANCE}
 #region Meta game manager
 var run_number : int = 1
 var total_resources : int = 30
+var entrance_number_in_new_scene : int = 0
 #endregion
 
 #region Abilities

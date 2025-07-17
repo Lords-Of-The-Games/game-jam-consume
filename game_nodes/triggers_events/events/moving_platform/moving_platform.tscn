@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0tb2vmvvul1l"]
+
+[ext_resource type="Script" uid="uid://cnbpyki077eod" path="res://game_nodes/triggers_events/events/moving_platform/moving_platform.gd" id="1_ceot5"]
+[ext_resource type="Texture2D" uid="uid://c6ld5qx3hgto3" path="res://assets/brackeys_platformer_assets/sprites/green_platform.png" id="1_s68ji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceot5"]
+size = Vector2(7, 30)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+script = ExtResource("1_ceot5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 8.0
+offset_right = 40.0
+offset_bottom = 10.0
+texture = ExtResource("1_s68ji")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 4.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ceot5")

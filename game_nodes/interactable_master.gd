@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name interactable
 
+signal interacted
+
 @export var saved_resource : SavedDataResource
 @onready var interact_label: Label = $Interact
 @onready var grayed_out: Label = $GrayedOut
@@ -36,6 +38,8 @@ func interact() -> void:
 		return
 	if interaction_disabled:
 		return
+	GlobalVariables.ability_uses[GlobalVariables.abilities.INTERACT] -= 1
+	interacted.emit()
 
 func save() -> void:
 	ResourceSaver.save(saved_resource)
