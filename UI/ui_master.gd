@@ -49,6 +49,8 @@ func late_ready() -> void:
 	cursor.hide()
 	message_panel.hide()
 	message_label.hide()
+	for i in button_parent.get_children().size() - 1:
+		button_parent.get_child(i+1).hide()
 	#damage_label.hide()
 	#damage_buttons.hide()
 
@@ -173,6 +175,7 @@ func receive_message(original_message : String, new_message : String, delay : fl
 		var current_button : AbilityButton = button_parent.get_child(child + 1)
 		current_button.text = ""
 		child += 1
+		current_button.show()
 	
 	transitioning = true
 	receiving_message = true
@@ -253,12 +256,13 @@ func unpause() -> void:
 	menu_open = false
 	transitioning = false
 
-func update_buttons_slowly(delay : float = 0.5) -> void:
+func update_buttons_slowly(delay : float = 0.75) -> void:
 	menu_open = true
 	transitioning = true
 	await get_tree().create_timer(delay).timeout
 	resource_label.text = str("Humanity:", GlobalVariables.total_resources)
 	var child : int = 0
+
 	for ability in GlobalVariables.ability_names.keys():
 		await get_tree().create_timer(delay).timeout
 		var current_button : AbilityButton = button_parent.get_child(child + 1)
@@ -281,12 +285,15 @@ func update_buttons_slowly(delay : float = 0.5) -> void:
 func update_buttons(was_first_button : bool = true) -> void:
 	resource_label.text = str("Humanity:", GlobalVariables.total_resources)
 	var child : int = 0
+	for i in button_parent.get_children():
+		i.hide()
 	for ability in GlobalVariables.ability_names.keys():
 		var current_button : AbilityButton = button_parent.get_child(child + 1)
 		current_button.ability = ability
 		var target_text = str( GlobalVariables.ability_names[ability], " : ", \
 		GlobalVariables.ability_uses[ability], "/", GlobalVariables.max_ability_uses[ability])
 		current_button.text = target_text
+		current_button.show()
 		child += 1
 		if was_first_button:
 			current_button.grab_focus()

@@ -117,10 +117,17 @@ speed = 500.0
 responsiveness = 5.0
 cooldown = 5.0
 animation_name = ""
-states = {}
+states = {
+"attacking": NodePath("../Attacking"),
+"idle": NodePath("../Idle")
+}
 
-[node name="Attacking" parent="StateMachine" index="3"]
-script = null
+[node name="Attacking" parent="StateMachine" index="3" node_paths=PackedStringArray("states")]
+attack_speed = 1000.0
+animation_name = ""
+states = {
+"chasing": NodePath("../Chasing")
+}
 
 [node name="Staggering" parent="StateMachine" index="4" node_paths=PackedStringArray("states")]
 states = {

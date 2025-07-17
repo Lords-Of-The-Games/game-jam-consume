@@ -7,6 +7,8 @@ extends CanvasLayer
 var total_resources : int = GlobalVariables.total_resources
 
 func _ready() -> void:
+	for i in button_parent.get_children():
+		i.hide()
 	MessageBus.ability_selected_in_menu.connect(assign_ability)
 	for i in GlobalVariables.ability_uses.keys():
 		GlobalVariables.ability_uses[i] = 0
@@ -18,6 +20,7 @@ func update_buttons(was_first_button : bool = true) -> void:
 	for ability in GlobalVariables.ability_names.keys():
 		var current_button : AbilityButton = button_parent.get_child(child)
 		current_button.ability = ability
+		current_button.show()
 		var target_text = str( GlobalVariables.ability_names[ability], " : ", \
 		GlobalVariables.ability_uses[ability], "/", GlobalVariables.max_ability_uses[ability])
 		current_button.text = target_text
@@ -36,11 +39,13 @@ func assign_ability(which_ability : GlobalVariables.abilities, _damaged : bool =
 	update_buttons(false)
 	if total_resources <= 0:
 		SceneLoader.load_scene(game_scene_path)
+		print_debug("ran out of resources")
 	var maxed_out : bool = true
 	for i in GlobalVariables.ability_uses.keys():
 		if GlobalVariables.ability_uses[i] < GlobalVariables.max_ability_uses[i]:
 			maxed_out = false
 	if maxed_out:
+		print_debug("maxed out")
 		SceneLoader.load_scene(game_scene_path)
 		
 	

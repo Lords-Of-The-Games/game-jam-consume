@@ -1,0 +1,25 @@
+other_you: You know what I miss?
+protagonist: Food? Water? Human connection?
+other_you: I miss free time more than that.
+other_you: The energy to just do meaningless stuff.
+protagonist: You mean like dancing?
+other_you: That's exactly what I mean.
+protagonist: Will dancing ever help me defeat the cave at all?
+other_you: No, never. It's completely useless and it will cost a bit of your energy every time you do it.
+- It's not worth it. It won't help us get out of the cave.
+	protagonist: Sorry, I'll skip. It seems like a waste of time.
+	other_you: It is. That's the point. Are you sure you don't want to learn?
+	- I'm sure, sorry. I have to focus on defeating this stupid cave.
+		protagonist: I'm sure, sorry. I have to focus on defeating this stupid cave.
+		other_you: All right. Your loss.
+	- Well...I can't resist dancing to salsa.
+		protagonist: Well, I can't resist dancing to  salsa. Let's do this!
+		Once again, you feel the familiar chill creep up on your spine. Something deep in the cave stirrs. You can't tell if it's happy or furious at your choice.
+		The only thing you know for sure is that these moves are fire!
+		[signal arg="other_you_third_conversation"]
+- Re-learn how to dance.
+	protagonist: You know what? Let's do this!
+	other_you: Yeah! Dance party!
+	Once again, you feel the familiar chill creep up on your spine. Something deep in the cave stirrs. You can't tell if it's happy or furious at your choice.
+	The only thing you know for sure is that these moves are fire!
+	[signal arg="other_you_third_conversation"]

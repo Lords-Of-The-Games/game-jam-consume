@@ -110,3 +110,29 @@ entrance_time = 0.25
 entrance_delay = 0.0
 entrance_transition = 11
 hover_easing = 1
+
+[node name="AbilityButton5" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+damaged = true
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton5" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton6" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("2_1drn3")]
+layout_mode = 2
+damaged = true
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton6" instance=ExtResource("3_tr4l1")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.15
+entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1

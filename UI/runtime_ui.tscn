@@ -62,6 +62,7 @@ size_flags_vertical = 3
 
 [node name="Ability1" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability1"]
 custom_minimum_size = Vector2(0, 75)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
@@ -95,6 +96,7 @@ size_flags_vertical = 3
 
 [node name="Ability2" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability2"]
 custom_minimum_size = Vector2(0, 75)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
@@ -130,6 +132,7 @@ size_flags_vertical = 3
 
 [node name="Ability3" type="VBoxContainer" parent="PlayTime/AbilitiesParent/Ability3"]
 custom_minimum_size = Vector2(0, 75)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_2geti")
@@ -205,8 +208,7 @@ damaged = true
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/DamageMenu/VBoxContainer/DamageButtons/AbilityButton" instance=ExtResource("5_xt7v4")]
 entrance_animation = true
 hover_rotation = 0.15
-entrance_delay = 0.1
-entrance_transition = 11
+entrance_delay = 0.0
 hover_easing = 1
 parallel_animations = false
 
@@ -218,8 +220,7 @@ damaged = true
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/DamageMenu/VBoxContainer/DamageButtons/AbilityButton2" instance=ExtResource("5_xt7v4")]
 entrance_animation = true
 hover_rotation = 0.15
-entrance_delay = 0.1
-entrance_transition = 11
+entrance_delay = 0.0
 hover_easing = 1
 parallel_animations = false
 
@@ -231,8 +232,7 @@ damaged = true
 [node name="Node" parent="AbilityMenu/Panel/HBoxContainer/DamageMenu/VBoxContainer/DamageButtons/AbilityButton3" instance=ExtResource("5_xt7v4")]
 entrance_animation = true
 hover_rotation = 0.15
-entrance_delay = 0.1
-entrance_transition = 11
+entrance_delay = 0.0
 hover_easing = 1
 parallel_animations = false
 
@@ -307,6 +307,36 @@ hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
 hover_time = 0.2
 hover_transition = 11
 entrance_time = 0.25
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton5" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton5" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
+entrance_time = 0.3
+entrance_delay = 0.0
+entrance_transition = 11
+hover_easing = 1
+
+[node name="AbilityButton6" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent" instance=ExtResource("5_meuoy")]
+layout_mode = 2
+
+[node name="Node" parent="AbilityMenu/Panel/HBoxContainer/MarginContainer/ButtonParent/AbilityButton6" instance=ExtResource("5_xt7v4")]
+connect_as_button = true
+entrance_animation = true
+hover_rotation = 0.3
+hover_modulate = Color(0.996076, 0.647736, 1.92523e-06, 1)
+hover_time = 0.2
+hover_transition = 11
+entrance_time = 0.35
 entrance_delay = 0.0
 entrance_transition = 11
 hover_easing = 1

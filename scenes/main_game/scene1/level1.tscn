@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dbbqdy3s8mmlm"]
+[gd_scene load_steps=23 format=4 uid="uid://dbbqdy3s8mmlm"]
 
 [ext_resource type="Texture2D" uid="uid://b11aqocciq27s" path="res://assets/RockyWorld_v1.1/01. Rocky Level/background1.png" id="1_u2et0"]
 [ext_resource type="Texture2D" uid="uid://cxduc7x6tl5f" path="res://assets/PixelFantasy_Caves_1.0/background3.png" id="1_yhq31"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dcdnlh4mph61n" path="res://Characters/player.tscn" id="4_6dy84"]
 [ext_resource type="PackedScene" uid="uid://dniqtxddhrgrp" path="res://game_nodes/npcs/npc_yourself1.tscn" id="6_wapv1"]
 [ext_resource type="PackedScene" uid="uid://bvog27mttrg7d" path="res://game_nodes/enemies/enemy_master.tscn" id="7_u2et0"]
-[ext_resource type="Resource" uid="uid://bbgyu7nywrm4o" path="res://scenes/main_game/scene1/slime3.tres" id="9_akme6"]
-[ext_resource type="Resource" uid="uid://catndltgbikmo" path="res://scenes/main_game/scene1/slime2.tres" id="9_w5j21"]
+[ext_resource type="Resource" uid="uid://dqe21bjk4o6qs" path="res://scenes/main_game/scene1/slime3.tres" id="9_akme6"]
+[ext_resource type="Resource" uid="uid://b54kim782tnai" path="res://scenes/main_game/scene1/slime2.tres" id="9_w5j21"]
 [ext_resource type="PackedScene" uid="uid://piqvpxjcl5m6" path="res://game_nodes/triggers_events/triggers/enemies_killed/enemies_killed.tscn" id="11_43e3d"]
 [ext_resource type="PackedScene" uid="uid://coor0rkdsxssj" path="res://game_nodes/triggers_events/events/queue_free/queue_free_event.tscn" id="12_hmxg5"]
 [ext_resource type="Texture2D" uid="uid://c6ld5qx3hgto3" path="res://assets/brackeys_platformer_assets/sprites/green_platform.png" id="13_bmfqu"]
 [ext_resource type="PackedScene" uid="uid://bil1g0s80db72" path="res://game_nodes/enemies/vulture/vulture.tscn" id="14_nfn3g"]
+[ext_resource type="PackedScene" uid="uid://4gb1aht8xlw7" path="res://game_nodes/npcs/cat.tscn" id="15_mv4fl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wapv1"]
 texture = ExtResource("2_6dy84")
@@ -5662,7 +5663,7 @@ unique_name_in_owner = true
 position = Vector2(21, 60)
 
 [node name="Yourself" parent="." instance=ExtResource("6_wapv1")]
-position = Vector2(342, 142)
+position = Vector2(54, 146)
 
 [node name="LowerRoom" type="Node2D" parent="."]
 
@@ -5774,6 +5775,12 @@ stretch_mode = 1
 
 [node name="Vulture" parent="LowerRoom" instance=ExtResource("14_nfn3g")]
 position = Vector2(1300, 165)
+
+[node name="Cat" parent="." instance=ExtResource("15_mv4fl")]
+position = Vector2(191, 143)
+scale = Vector2(0.5, 0.5)
+collision_layer = 1
+collision_mask = 1
 
 [editable path="Player"]
 [editable path="LowerRoom/Slime2"]

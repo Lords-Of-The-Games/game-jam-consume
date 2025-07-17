@@ -51,7 +51,7 @@ signal  finished_entering
 @export var properties : Array[String] = ["scale", "position", "rotation", "size", "self_modulate"]
 @export var parallel_animations : bool = true
 
-
+@onready var timer: Timer = $Timer
 var rng = RandomNumberGenerator.new()
 var target : Control
 var default_scale : Vector2
@@ -75,7 +75,8 @@ func _ready() -> void:
 	if wait_for:
 		wait_for.finished_entering.connect(on_enter_deferred)
 func setup() -> void:
-	await get_tree().create_timer(0.05).timeout
+	timer.start(0.05)
+	await timer.timeout
 	if from_center:
 		target.pivot_offset = target.size / 2
 	default_scale = target.scale
@@ -125,11 +126,14 @@ func on_enter(finished_waiting : bool = false) -> void:
 		if !finished_waiting:
 			add_tween(entrance_values, true, 0.0, IMMEDIATE_TRANSITION, hover_easing, 0.0)
 		else:
-			await get_tree().create_timer(actual_entrance_delay).timeout
+			timer.start(actual_entrance_delay)
+			await timer.timeout
 			add_tween(default_values, parallel_animations, actual_entrance_time, entrance_transition, hover_easing, 0.0, true)
 	else:
 		add_tween(entrance_values, true, 0.0, IMMEDIATE_TRANSITION, hover_easing, 0.0)
-		await get_tree().create_timer(actual_entrance_delay).timeout
+		
+		timer.start(actual_entrance_delay)
+		await timer.timeout
 		add_tween(default_values, parallel_animations, actual_entrance_time, entrance_transition, hover_easing, 0.0, true)
 
 func exit():
@@ -140,7 +144,8 @@ func exit():
 	for property in properties:
 		tween.tween_property(target, property, exit_values[property], exit_time).set_trans(exit_transition).set_ease(hover_easing)
 	if get_tree() != null:
-		await get_tree().create_timer(exit_delay).timeout
+		timer.start(exit_delay)
+		await timer.timeout
 		tween.play()
 		await tween.finished
 		target.hide()
@@ -175,7 +180,8 @@ func add_tween(values : Dictionary, parallel : bool, seconds : float, transition
 	if !is_inside_tree():
 		return
 	if get_tree() != null:
-		await get_tree().create_timer(delay).timeout
+		timer.start(delay)
+		await timer.timeout
 		tween.play()
 	if entering: 
 		await tween.finished
