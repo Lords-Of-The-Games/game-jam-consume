@@ -1,0 +1,16 @@
+protagonist: Hey, buddy. How are you doing? Have you met the other me already? Am I taking good care of you?
+kitten: Meow!
+The cat looks happy
+protagonist: I guess I should give you a name.
+- Snowball
+	protagonist: You are a classic beauty, Snowball. You deserve a classically beatiful name.
+- Tequila
+	protagonist: You know, you might just be my favorite thing, tequila. 
+- Kafka
+	protagonist: I guess Kafka suits you, being trapped in this cave, and all.
+- His Catcellency, Kitten Ferdinand
+	protagonist: (you bow) Please to make your acquaintance, your Catcellency.
+protagonist: I'll get all of us out of here. You'll see. 
+protagonist: Take care of the other me while I'm gone.
+You pet the cat one last time before you leave. Somehow this show of humanity returns some of your essence to you.
+[signal arg="first_pet"]

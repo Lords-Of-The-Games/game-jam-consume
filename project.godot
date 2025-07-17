@@ -31,10 +31,14 @@ GameManager="*res://autoloads/game_manager.gd"
 [dialogic]
 
 directories/dch_directory={
+"kitten": "res://dialogic/characters/kitten.dch",
 "other_you": "res://dialogic/characters/other_you.dch",
 "protagonist": "res://dialogic/characters/protagonist.dch"
 }
 directories/dtl_directory={
+"cat_first_conversation": "res://dialogic/timeline/cat_first_conversation.dtl",
+"cat_second_conversation": "res://dialogic/timeline/cat_second_conversation.dtl",
+"find_kitten": "res://dialogic/timeline/find_kitten.dtl",
 "first_conversation": "res://dialogic/timeline/first_conversation.dtl",
 "second_conversation": "res://dialogic/timeline/second_conversation.dtl",
 "trial_timeline": "res://dialogic/timeline/trial_timeline.dtl"

@@ -1,0 +1,8 @@
+Deep in the bowels of the Cave you find a kitten. Your mind races with explanations of how it can survive within, or how it got here in the first place.
+In the end, it doesn't matter. The only thing that matters is your choice.
+- Leave the kitten.
+- Rescue the kitten.
+	You don't hesitate. The kitten needs help, and you respond in kind.
+	A chill runs down your spine. The cave doesn't want you to rescue this kitten. 
+	Another reason to do it.
+	[signal arg="took_kitten"]
