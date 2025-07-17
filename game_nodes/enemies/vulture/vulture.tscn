@@ -1,9 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://bil1g0s80db72"]
+[gd_scene load_steps=24 format=3 uid="uid://bil1g0s80db72"]
 
 [ext_resource type="PackedScene" uid="uid://bvog27mttrg7d" path="res://game_nodes/enemies/enemy_master.tscn" id="1_bvo8o"]
 [ext_resource type="Texture2D" uid="uid://1ipi7jm6jfpf" path="res://assets/Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/Vulture/spritesheets/vulture.png" id="2_y6m6y"]
 [ext_resource type="Texture2D" uid="uid://csj5p7tno8mc6" path="res://assets/Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/Vulture/spritesheets/vulture-idle.png" id="3_ccqfm"]
 [ext_resource type="Script" uid="uid://55nm648dguc6" path="res://game_nodes/enemies/vulture/state_chasing.gd" id="4_y6m6y"]
+[ext_resource type="Script" uid="uid://dtei5uxryc84j" path="res://game_nodes/enemies/vulture/state_attacking.gd" id="5_ccqfm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccqfm"]
+atlas = ExtResource("2_y6m6y")
+region = Rect2(78, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvbeo"]
+atlas = ExtResource("2_y6m6y")
+region = Rect2(117, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x503c"]
+atlas = ExtResource("2_y6m6y")
+region = Rect2(39, 0, 39, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lleog"]
 atlas = ExtResource("2_y6m6y")
@@ -37,8 +50,36 @@ region = Rect2(78, 0, 39, 39)
 atlas = ExtResource("3_ccqfm")
 region = Rect2(117, 0, 39, 39)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b5g2"]
+atlas = ExtResource("2_y6m6y")
+region = Rect2(117, 0, 39, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7yer"]
+atlas = ExtResource("2_y6m6y")
+region = Rect2(78, 0, 39, 39)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ems6h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccqfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvbeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x503c")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lleog")
@@ -54,7 +95,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"chase",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,6 +113,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b5g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7yer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7yer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7yer")
+}],
+"loop": false,
+"name": &"windup",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew38q"]
@@ -84,15 +142,14 @@ size = Vector2(17, 16)
 size = Vector2(202, 145)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b5g2"]
-size = Vector2(125, 91)
+size = Vector2(102.25, 64.25)
 
 [node name="Vulture" instance=ExtResource("1_bvo8o")]
+max_hp = 2
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_ems6h")
-animation = &"idle"
-frame_progress = 0.217138
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
@@ -113,9 +170,9 @@ states = {
 
 [node name="Chasing" parent="StateMachine" index="2" node_paths=PackedStringArray("states")]
 script = ExtResource("4_y6m6y")
-speed = 500.0
+speed = 250.0
 responsiveness = 5.0
-cooldown = 5.0
+cooldown = 1.5
 animation_name = ""
 states = {
 "attacking": NodePath("../Attacking"),
@@ -123,10 +180,10 @@ states = {
 }
 
 [node name="Attacking" parent="StateMachine" index="3" node_paths=PackedStringArray("states")]
-attack_speed = 1000.0
-animation_name = ""
+script = ExtResource("5_ccqfm")
 states = {
-"chasing": NodePath("../Chasing")
+"chasing": NodePath("../Chasing"),
+"dead": NodePath("../Dead")
 }
 
 [node name="Staggering" parent="StateMachine" index="4" node_paths=PackedStringArray("states")]
@@ -153,5 +210,5 @@ position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_lhhfh")
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(0, 0)
+position = Vector2(8, -2)
 shape = SubResource("RectangleShape2D_0b5g2")

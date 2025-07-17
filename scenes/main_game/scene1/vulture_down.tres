@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SavedDataResource" load_steps=2 format=3 uid="uid://bj0elt67f6t16"]
+
+[ext_resource type="Script" uid="uid://bk71irp45qgrn" path="res://game_nodes/saved_data/save_data_resource_master.gd" id="1_qexxv"]
+
+[resource]
+script = ExtResource("1_qexxv")
+spawn = true
+interacted = 0
+interaction_disabled = false
+conversation_choices = Dictionary[String, String]({})
+hp = 2
+metadata/_custom_type_script = "uid://bk71irp45qgrn"

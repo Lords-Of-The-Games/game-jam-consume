@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6g2nj8js74hm"]
+
+[ext_resource type="Script" uid="uid://tgxdsbgfqdjk" path="res://game_nodes/triggers_events/events/change_scene/change_scene.gd" id="1_v77mk"]
+
+[node name="ChangeScene" type="Node2D"]
+script = ExtResource("1_v77mk")

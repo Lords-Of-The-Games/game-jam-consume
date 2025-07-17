@@ -7,6 +7,13 @@ var SLIME_3 = preload("res://scenes/main_game/scene1/slime3.tres")
 var THE_OTHER_YOU_1 = preload("res://scenes/main_game/scene1/the_other_you1.tres")
 var CAT_SCENE_1 = preload("res://scenes/main_game/scene1/cat_scene1.tres")
 var CAT_box = preload("uid://caumnxxkbw4jh")
+var LEVER_1 = preload("res://scenes/main_game/scene1/lever1.tres")
+var LEVER_2 = preload("res://scenes/main_game/scene1/lever2.tres")
+var VULTURE_DOWN = preload("res://scenes/main_game/scene1/vulture_down.tres")
+var VULTURE_UP_1 = preload("res://scenes/main_game/scene1/vulture_up1.tres")
+var VULTURE_UP_2 = preload("res://scenes/main_game/scene1/vulture_up2.tres")
+var BOSS_BARRIER = preload("res://scenes/main_game/scene1/boss_barrier.tres")
+
 func reset_save() -> void:
 	SLIME_1.spawn = true
 	SLIME_1.hp = 3
@@ -14,6 +21,18 @@ func reset_save() -> void:
 	SLIME_2.hp = 3
 	SLIME_3.spawn = true
 	SLIME_3.hp = 3
+	
+	VULTURE_DOWN.spawn = true
+	VULTURE_DOWN.hp = 2
+	VULTURE_UP_1.spawn = true
+	VULTURE_UP_1.hp = 2
+	VULTURE_UP_2.spawn = true
+	VULTURE_UP_2.hp = 2
+	ResourceSaver.save(VULTURE_DOWN)
+	ResourceSaver.save(VULTURE_UP_1)
+	ResourceSaver.save(VULTURE_UP_2)
+	
+	
 	THE_OTHER_YOU_1.spawn = false
 	THE_OTHER_YOU_1.conversation_choices["first_conversation"] = "not"
 	THE_OTHER_YOU_1.conversation_choices["second_conversation"] = "not"
@@ -23,13 +42,20 @@ func reset_save() -> void:
 	CAT_SCENE_1.conversation_choices["cat_second_conversation"] = "not"
 	CAT_SCENE_1.conversation_choices["found"] = "not"
 	CAT_box.conversation_choices["found"] = "not"
-
+	LEVER_1.interacted = 0
+	LEVER_2.interacted = 0
+	
 	ResourceSaver.save(SLIME_1)
 	ResourceSaver.save(SLIME_2)
 	ResourceSaver.save(SLIME_3)
 	ResourceSaver.save(THE_OTHER_YOU_1)
 	ResourceSaver.save(CAT_SCENE_1)
 	ResourceSaver.save(CAT_box)
+	ResourceSaver.save(LEVER_1)
+	ResourceSaver.save(LEVER_2)
+	
+	BOSS_BARRIER.interacted = 0
+	ResourceSaver.save(BOSS_BARRIER)
 	
 #endregion
 

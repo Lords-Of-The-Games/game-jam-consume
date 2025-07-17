@@ -41,7 +41,7 @@ func process_physics(delta: float, _direction : Vector2) -> EnemyState:
 
 	if tranisition_on_cooldown and !timer.is_stopped():
 		target_velocity *= -1
-		current_responsiveness /= 5.0
+		target_velocity /= 10.0
 
 	target_velocity = lerp(_direction,target_velocity, delta * current_responsiveness)
 	

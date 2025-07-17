@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dra572edhsbnu" path="res://game_nodes/enemies/enemy_master.gd" id="1_srl5c"]
 [ext_resource type="Texture2D" uid="uid://c0cbbclsbh000" path="res://assets/brackeys_platformer_assets/sprites/slime_green.png" id="2_blv32"]
-[ext_resource type="Resource" uid="uid://t4x4y0qpaotw" path="res://scenes/main_game/scene1/slime1.tres" id="2_p2hsa"]
+[ext_resource type="Resource" uid="uid://d12np47n47gr" path="res://scenes/main_game/scene1/slime1.tres" id="2_p2hsa"]
 [ext_resource type="Script" uid="uid://c07rt67b4l5bj" path="res://game_nodes/enemies/enemy_state_machine.gd" id="2_tgdr0"]
 [ext_resource type="Script" uid="uid://1gwevdbc6nb3" path="res://game_nodes/enemies/slime_basic/dead_state.gd" id="3_5322v"]
 [ext_resource type="Script" uid="uid://bi6fcfsd35sbt" path="res://game_nodes/enemies/hurtbox.gd" id="5_1h8oh"]

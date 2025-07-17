@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SavedDataResource" load_steps=2 format=3 uid="uid://cpi7hqqjlricc"]
+[gd_resource type="Resource" script_class="SavedDataResource" load_steps=2 format=3 uid="uid://dc8eoefdov0lu"]
 
 [ext_resource type="Script" uid="uid://bk71irp45qgrn" path="res://game_nodes/saved_data/save_data_resource_master.gd" id="1_tpi2c"]
 
