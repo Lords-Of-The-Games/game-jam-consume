@@ -75,6 +75,7 @@ func _ready() -> void:
 	_hide_new_game_if_unset()
 
 func _on_new_game_button_pressed() -> void:
+	GlobalVariables.entrance_number_in_new_scene = 1
 	new_game()
 
 func _on_options_button_pressed() -> void:

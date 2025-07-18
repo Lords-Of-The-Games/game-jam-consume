@@ -10,23 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://dpba8khgie8j5" path="res://game_nodes/triggers_events/triggers/player_entered/player_entered.tscn" id="7_nkh5v"]
 [ext_resource type="PackedScene" uid="uid://bvog27mttrg7d" path="res://game_nodes/enemies/enemy_master.tscn" id="7_u2et0"]
 [ext_resource type="PackedScene" uid="uid://c6g2nj8js74hm" path="res://game_nodes/triggers_events/events/change_scene/change_scene.tscn" id="8_4nxvw"]
-[ext_resource type="Resource" uid="uid://c2n6xmcqgj7e1" path="res://scenes/main_game/scene1/slime3.tres" id="9_akme6"]
-[ext_resource type="Resource" uid="uid://ymxvs00fmde4" path="res://scenes/main_game/scene1/slime2.tres" id="9_w5j21"]
+[ext_resource type="Resource" uid="uid://2bobhg3rdup1" path="res://scenes/main_game/scene1/slime3.tres" id="9_akme6"]
+[ext_resource type="Resource" uid="uid://csxei3bi624o1" path="res://scenes/main_game/scene1/slime2.tres" id="9_w5j21"]
 [ext_resource type="PackedScene" uid="uid://piqvpxjcl5m6" path="res://game_nodes/triggers_events/triggers/enemies_killed/enemies_killed.tscn" id="11_43e3d"]
 [ext_resource type="PackedScene" uid="uid://coor0rkdsxssj" path="res://game_nodes/triggers_events/events/queue_free/queue_free_event.tscn" id="12_hmxg5"]
 [ext_resource type="Texture2D" uid="uid://c6ld5qx3hgto3" path="res://assets/brackeys_platformer_assets/sprites/green_platform.png" id="13_bmfqu"]
 [ext_resource type="PackedScene" uid="uid://bil1g0s80db72" path="res://game_nodes/enemies/vulture/vulture.tscn" id="14_nfn3g"]
-[ext_resource type="Resource" uid="uid://bj0elt67f6t16" path="res://scenes/main_game/scene1/vulture_down.tres" id="15_ke4h7"]
+[ext_resource type="Resource" uid="uid://b82v6g2xjxu57" path="res://scenes/main_game/scene1/vulture_down.tres" id="15_ke4h7"]
 [ext_resource type="PackedScene" uid="uid://4gb1aht8xlw7" path="res://game_nodes/npcs/cat.tscn" id="15_mv4fl"]
 [ext_resource type="PackedScene" uid="uid://oj8n5407m3vk" path="res://game_nodes/triggers_events/triggers/lever/lever.tscn" id="16_ndnac"]
-[ext_resource type="Resource" uid="uid://dd52ah58f3bi3" path="res://scenes/main_game/scene1/lever1.tres" id="17_b65vl"]
+[ext_resource type="Resource" uid="uid://b52xohonjxvpq" path="res://scenes/main_game/scene1/lever1.tres" id="17_b65vl"]
 [ext_resource type="PackedScene" uid="uid://d0tb2vmvvul1l" path="res://game_nodes/triggers_events/events/moving_platform/moving_platform.tscn" id="18_b65vl"]
-[ext_resource type="Resource" uid="uid://b24r8ymly8ywg" path="res://scenes/main_game/scene1/lever2.tres" id="19_nyjg2"]
-[ext_resource type="Resource" uid="uid://bq3wetojco7s8" path="res://scenes/main_game/scene1/vulture_up1.tres" id="21_urlsm"]
-[ext_resource type="Resource" uid="uid://beyhqbk6et1a" path="res://scenes/main_game/scene1/vulture_up2.tres" id="22_berq1"]
+[ext_resource type="Resource" uid="uid://bd2ga70gpyttn" path="res://scenes/main_game/scene1/lever2.tres" id="19_nyjg2"]
+[ext_resource type="Resource" uid="uid://cs4dkh0o1yisu" path="res://scenes/main_game/scene1/vulture_up1.tres" id="21_urlsm"]
+[ext_resource type="Resource" uid="uid://bpisv2khdjk3o" path="res://scenes/main_game/scene1/vulture_up2.tres" id="22_berq1"]
 [ext_resource type="PackedScene" uid="uid://dgj2ifm2tachx" path="res://game_nodes/triggers_events/triggers/resource_trigger/resource_trigger.tscn" id="23_berq1"]
-[ext_resource type="Resource" uid="uid://d2guqb30osw6f" path="res://scenes/main_game/scene1/boss_barrier.tres" id="24_70egw"]
-[ext_resource type="Resource" uid="uid://bg8in4spjbcqp" path="res://scenes/main_game/cat_box.tres" id="25_70egw"]
+[ext_resource type="Resource" uid="uid://bk2qwkn8ttvpj" path="res://scenes/main_game/scene1/boss_barrier.tres" id="24_70egw"]
+[ext_resource type="Resource" uid="uid://bjahqci1oarnb" path="res://scenes/main_game/cat_box.tres" id="25_70egw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epjx4"]
 size = Vector2(188, 123)
@@ -42,6 +42,21 @@ size = Vector2(334, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pbf5"]
 size = Vector2(151, 10)
+
+[sub_resource type="Animation" id="Animation_ke4h7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_jyt6q"]
 resource_name = "move"
@@ -60,7 +75,13 @@ tracks/0/keys = {
 "values": [Vector2(0, 5), Vector2(0, 5), Vector2(0, 1), Vector2(0, -12), Vector2(-1609, -12), Vector2(-1609, 385), Vector2(-1609, 395), Vector2(-1609, 395)]
 }
 
-[sub_resource type="Animation" id="Animation_ke4h7"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_urlsm"]
+_data = {
+&"RESET": SubResource("Animation_ke4h7"),
+&"move": SubResource("Animation_jyt6q")
+}
+
+[sub_resource type="Animation" id="Animation_koglx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -73,12 +94,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_urlsm"]
-_data = {
-&"RESET": SubResource("Animation_ke4h7"),
-&"move": SubResource("Animation_jyt6q")
 }
 
 [sub_resource type="Animation" id="Animation_nyjg2"]
@@ -98,7 +113,16 @@ tracks/0/keys = {
 "values": [Vector2(0, 5), Vector2(0, 5), Vector2(0, 1), Vector2(0, -12), Vector2(-820, -12), Vector2(-824, -12), Vector2(-824, -12)]
 }
 
-[sub_resource type="Animation" id="Animation_koglx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyt6q"]
+_data = {
+&"RESET": SubResource("Animation_koglx"),
+&"move": SubResource("Animation_nyjg2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7rfr"]
+size = Vector2(15, 34.5)
+
+[sub_resource type="Animation" id="Animation_nkh5v"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -110,17 +134,8 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 1)]
+"values": [Vector2(630, 144)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyt6q"]
-_data = {
-&"RESET": SubResource("Animation_koglx"),
-&"move": SubResource("Animation_nyjg2")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7rfr"]
-size = Vector2(15, 34.5)
 
 [sub_resource type="Animation" id="Animation_fnunx"]
 resource_name = "move"
@@ -137,21 +152,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(630, 144), Vector2(630, 150), Vector2(630, 321), Vector2(473, 412)]
-}
-
-[sub_resource type="Animation" id="Animation_nkh5v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(630, 144)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4nxvw"]
