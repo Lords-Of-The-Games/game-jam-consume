@@ -1,8 +1,9 @@
-[gd_scene load_steps=50 format=3 uid="uid://dcdnlh4mph61n"]
+[gd_scene load_steps=51 format=3 uid="uid://dcdnlh4mph61n"]
 
 [ext_resource type="PackedScene" uid="uid://cyfgaflg7oum2" path="res://UI/runtime_ui.tscn" id="1_5mj4t"]
 [ext_resource type="Script" uid="uid://bsd1cpks8bdlg" path="res://Characters/character_body_2d.gd" id="1_eovys"]
 [ext_resource type="Texture2D" uid="uid://barkx4ev6d3tm" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="2_vb825"]
+[ext_resource type="PackedScene" uid="uid://buf5al7defjav" path="res://Characters/PlayerDash.tscn" id="4_65n15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65n15"]
 atlas = ExtResource("2_vb825")
@@ -202,27 +203,27 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cbmiu")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_w3rah")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_c4gpq")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_642pg")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_q6x5r")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_22qw1")
 }, {
-"duration": 1.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_mevwr")
 }],
 "loop": false,
 "name": &"dash",
-"speed": 10.0
+"speed": 62.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -352,14 +353,14 @@ script = ExtResource("1_eovys")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_8sfs3")
-animation = &"idle"
+animation = &"dash"
 autoplay = "idle"
-frame_progress = 0.243855
 
 [node name="PlayerCollisionShape" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_ywxx0")
 
 [node name="PlayerCamera" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
 
 [node name="UI" parent="CharacterBody2D/PlayerCamera" instance=ExtResource("1_5mj4t")]
 visible = false
@@ -370,3 +371,5 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionArea"]
 shape = SubResource("RectangleShape2D_eovys")
+
+[node name="PlayerDash" parent="CharacterBody2D" instance=ExtResource("4_65n15")]
